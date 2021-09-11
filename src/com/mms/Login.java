@@ -3,9 +3,11 @@ package com.mms;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 
-public class Login {
+public class Login implements ActionListener {
     JFrame frame;
     //    Image img;
     JLabel lbl_username, lbl_password, txt_title;
@@ -66,6 +68,7 @@ public class Login {
         btn_register = new JButton("Register");
         btn_register.setForeground(Color.decode("#E9EDF5"));
         btn_register.setBackground(Color.decode("#1A2B63"));
+        btn_register.addActionListener(this);
         btn_register.setBounds(260, 450, 100, 40);
 
         frame.add(btn_register);
@@ -85,5 +88,13 @@ public class Login {
     }
     public static void main(String[]Args){
         new Login();
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if (e.getSource()==btn_register){
+            new Register();
+            frame.dispose();
+        }
     }
 }
