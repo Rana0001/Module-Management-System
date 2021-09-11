@@ -54,7 +54,6 @@ public class Login {
         txt_password.setBounds(150, 380, 210, 40);
 
         // Inserting Image on Button
-        ImageIcon img_login = new ImageIcon("src\\icons\\login.png");
 
 
         btn_login = new JButton("Login");
@@ -66,6 +65,7 @@ public class Login {
         btn_register = new JButton("Register");
         btn_register.setForeground(Color.decode("#E9EDF5"));
         btn_register.setBackground(Color.decode("#1A2B63"));
+        btn_register.addActionListener(this);
         btn_register.setBounds(260, 450, 100, 40);
 
         frame.add(btn_register);
@@ -77,13 +77,21 @@ public class Login {
         frame.add(txt_password);
         frame.add(txt_username);
         frame.setLayout(null);
-        frame.setSize(500, 650);
+        frame.setSize(500, 600);
         frame.setVisible(true);
-        frame.setLocation(500,50);
+        frame.setLocation(500,100);
         frame.setResizable(false);
+
 
     }
     public static void main(String[]Args){
         new Login();
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if (e.getSource()==btn_register){
+            new Register();
+        }
     }
 }
