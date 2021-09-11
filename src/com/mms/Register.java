@@ -2,8 +2,10 @@ package com.mms;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-public class Register {
+public class Register implements ActionListener {
     JFrame register;
     JLabel lbl_heading,lbl_subheading, lbl_fname, lbl_lname, lbl_email, lbl_pass, lbl_cpass,lbl_contact;
     JButton btn_register, btn_cancel;
@@ -118,11 +120,16 @@ public class Register {
 
         btn_register = new JButton("Submit");
         btn_register.setFont(fon2);
+        btn_register.setForeground(Color.decode("#E9EDF5"));
+        btn_register.setBackground(Color.decode("#1A2B63"));
         btn_register.setBounds(280, 540, 100, 50);
         register.add(btn_register);
 
         btn_cancel = new JButton("Quit");
         btn_cancel.setFont(fon2);
+        btn_cancel.addActionListener(this);
+        btn_cancel.setForeground(Color.decode("#E9EDF5"));
+        btn_cancel.setBackground(Color.decode("#1A2B63"));
         btn_cancel.setBounds(420, 540, 100, 50);
         register.add(btn_cancel);
 
@@ -137,5 +144,12 @@ public class Register {
     }
     public static void main(String[]Args){
         new Register();
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if (e.getSource()==btn_cancel){
+            register.dispose();
+        }
     }
 }
