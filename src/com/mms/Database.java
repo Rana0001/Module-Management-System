@@ -1,4 +1,5 @@
 package com.mms;
+
 import java.sql.*;
 
 
@@ -7,34 +8,55 @@ public class Database {
     Statement st;
     int val;
     ResultSet rows;
-    public Database(){
+
+    public Database() {
         String url = "jdbc:mysql://localhost:3306/database";
         String user = "root";
         String password = "root";
 
         try {
-            myConn = DriverManager.getConnection(url,user,password);
+            myConn = DriverManager.getConnection(url, user, password);
 
-            if(myConn!=null){
+            if (myConn != null) {
                 System.out.println("Connection is Successful!");
-            }else{
+            } else {
                 System.out.println("There is an error.");
             }
             st = myConn.createStatement();
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
-    public int insert(String query){
+
+    public int insert(String query) {
         try {
             val = st.executeUpdate(query);
-        }catch (Exception throwables){
+        } catch (Exception throwables) {
             throwables.printStackTrace();
         }
-    return val;
+        return val;
+    }
 
+    public int delete(String query) {
+        try {
+            val = st.executeUpdate(query);
+        } catch (Exception throwables) {
+            throwables.printStackTrace();
+        }
+        return val;
 
     }
+
+    public int update(String query) {
+        try {
+            val = st.executeUpdate(query);
+        } catch (Exception throwables) {
+            throwables.printStackTrace();
+        }
+        return val;
+
+    }
+
     public ResultSet select(String query) {
         try {
             rows = st.executeQuery(query);
@@ -43,7 +65,8 @@ public class Database {
         }
         return rows;
     }
-    public static void main(String[]Args){
+
+    public static void main(String[] Args) {
         new Database();
     }
 }
