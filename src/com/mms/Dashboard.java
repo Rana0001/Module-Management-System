@@ -8,8 +8,8 @@ import java.awt.*;
 public class Dashboard {
     JFrame dashboard;
     JLabel label,current_date,banner_label,txt_title,txt_access,txt_stats,txt_calender,txt_time;
-    JButton btn_profile,btn_manageBook,btn_event,btn_manage;
-    JPanel leftpanel,datepanel, timepanel;
+    JButton btn_profile,btn_manageBook,btn_event,btn_manage,btn_logout;
+    JPanel leftpanel,datepanel, timepanel, statpanel;
     JOptionPane msg;
     Font font,font1,font2;
 //    Date date;
@@ -29,6 +29,10 @@ public class Dashboard {
         Image icon = Toolkit.getDefaultToolkit().getImage("src\\icons\\books.png");
         dashboard.setIconImage(icon);
 
+        ImageIcon profile_icon = new ImageIcon(new ImageIcon("src\\icons\\profile.png").getImage().getScaledInstance(150, 120, Image.SCALE_SMOOTH));
+        JLabel profile_label = new JLabel(profile_icon);
+        profile_label.setBounds(80,50,150,120);
+        dashboard.add(profile_label);
 
 
 
@@ -50,12 +54,20 @@ public class Dashboard {
 
 
 
-        btn_event = new JButton("Manage Event");
+        btn_event = new JButton("MANAGE EVENT");
         btn_event.setBounds(30,460,250,40);
         btn_event.setForeground(Color.decode("#E9EDF5"));
         btn_event.setBackground(Color.decode("#5375e2"));
         btn_event.setFont(font2);
         dashboard.add(btn_event);
+
+
+        btn_logout = new JButton("LOG OUT");
+        btn_logout.setBounds(30,600,250,40);
+        btn_logout.setForeground(Color.decode("#E9EDF5"));
+        btn_logout.setBackground(Color.decode("#5375e2"));
+        btn_logout.setFont(font2);
+        dashboard.add(btn_logout);
 
 
 
@@ -89,17 +101,17 @@ public class Dashboard {
         dashboard.add(txt_access);
 
 
-        txt_stats = new JLabel("Student Stats");
+        txt_stats = new JLabel("STUDENT STAT");
         txt_stats.setForeground(Color.decode("#E9EDF5"));
         txt_stats.setFont(font1);
-        txt_stats.setBounds(800,350,120,30);
+        txt_stats.setBounds(800,350,150,30);
         dashboard.add(txt_stats);
 
 
-        txt_calender = new JLabel("Current Date");
+        txt_calender = new JLabel("CURRENT DATE");
         txt_calender.setForeground(Color.decode("#E9EDF5"));
         txt_calender.setFont(font1);
-        txt_calender.setBounds(400,550,120,30);
+        txt_calender.setBounds(400,550,150,30);
         dashboard.add(txt_calender);
 
         datepanel = new JPanel();
@@ -116,10 +128,10 @@ public class Dashboard {
 
 
 
-        txt_time = new JLabel("Current Time");
+        txt_time = new JLabel("CURRENT TIME");
         txt_time.setForeground(Color.decode("#E9EDF5"));
         txt_time.setFont(font1);
-        txt_time.setBounds(800,550,120,30);
+        txt_time.setBounds(800,550,150,30);
         dashboard.add(txt_time);
 
         timepanel = new JPanel();
@@ -134,12 +146,40 @@ public class Dashboard {
         current_time.setForeground(Color.decode("#5375e2"));
         timepanel.add(current_time);
 
-        btn_manage = new JButton("Manage Book");
-        btn_manage.setBounds(30,460,250,40);
+        ImageIcon manage_book = new ImageIcon(new ImageIcon("src\\icons\\manage.png").getImage().getScaledInstance(150, 100, Image.SCALE_SMOOTH));
+        btn_manage = new JButton(manage_book);
+        btn_manage.setBounds(380,380,200,120);
         btn_manage.setForeground(Color.decode("#E9EDF5"));
         btn_manage.setBackground(Color.decode("#5375e2"));
         btn_manage.setFont(font2);
         dashboard.add(btn_manage);
+
+        JLabel attend = new JLabel("CLASS ATTENDED");
+        attend.setForeground(Color.decode("#5375e2"));
+        attend.setFont(font1);
+        attend.setBounds(790,380,180,30);
+        dashboard.add(attend);
+
+        JLabel present = new JLabel("100/112");
+        present.setForeground(Color.decode("#5375e2"));
+        present.setFont(font1);
+        present.setBounds(820,420,180,30);
+        dashboard.add(present);
+
+        JLabel info = new JLabel("PRESENT/TOTAL CLASS");
+        info.setForeground(Color.decode("#5375e2"));
+        info.setFont(font1);
+        info.setBounds(770,460,250,30);
+        dashboard.add(info);
+
+
+        statpanel = new JPanel();
+        statpanel.setBounds(750,380,250,120);
+        statpanel.setBackground(Color.decode("#E9EDF5"));
+        statpanel.setBorder(BorderFactory.createMatteBorder(3,3,3,3,Color.decode("#1A2B63")));
+        dashboard.add(statpanel);
+
+
 
 
         dashboard.setLayout(null);
@@ -148,6 +188,8 @@ public class Dashboard {
         dashboard.setLocation(200,10);
         dashboard.getContentPane().setBackground(Color.decode("#5375e2"));
         dashboard.setResizable(false);
+
+
 
     }
     public static void main(String[]Args){
