@@ -16,11 +16,12 @@ public class Login implements ActionListener {
     JButton btn_login, btn_register;
     JTextField txt_username;
     JPasswordField txt_password;
-    Font fn, fn1;
+    Font fn, fn1,fn2;
 
     public Login() {
         frame = new JFrame("Login");
         fn = new Font("Cambria", Font.BOLD, 25);
+        fn2 = new Font("Cambria", Font.BOLD, 20);
 
         fn1 = new Font("Cambria", Font.ITALIC, 15);
 
@@ -51,14 +52,16 @@ public class Login implements ActionListener {
         lbl_password.setBounds(210, 350, 100, 20);
 
         txt_username = new JTextField();
+        txt_username.setFont(fn2);
         txt_username.setBounds(150, 280, 210, 40);
 
 
         txt_password = new JPasswordField();
+        txt_password.setFont(fn2);
         txt_password.setBounds(150, 380, 210, 40);
 
         // Inserting Image on Button
-        ImageIcon img_login = new ImageIcon("src\\icons\\login.png");
+//        ImageIcon img_login = new ImageIcon("src\\icons\\login.png");
 
 
         btn_login = new JButton("Login");
