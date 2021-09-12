@@ -8,10 +8,10 @@ import java.awt.*;
 public class Dashboard {
     JFrame dashboard;
     JLabel label,current_date,banner_label,txt_title,txt_access,txt_stats,txt_calender,txt_time;
-    JButton btn;
+    JButton btn_profile,btn_manageBook,btn_event,btn_manage;
     JPanel leftpanel,datepanel, timepanel;
     JOptionPane msg;
-    Font font,font1;
+    Font font,font1,font2;
 //    Date date;
     LocalDate date;
     java.util.Date time;
@@ -24,6 +24,42 @@ public class Dashboard {
         dashboard = new JFrame("DashBoard");
         font = new Font("Cambria", Font.ITALIC, 35);
         font1 = new Font("Cambria", Font.ITALIC, 20);
+        font2 = new Font("Cambria", Font.BOLD, 20);
+
+        Image icon = Toolkit.getDefaultToolkit().getImage("src\\icons\\books.png");
+        dashboard.setIconImage(icon);
+
+
+
+
+        btn_profile = new JButton("PROFILE");
+        btn_profile.setBounds(30,300,250,40);
+        btn_profile.setForeground(Color.decode("#E9EDF5"));
+        btn_profile.setBackground(Color.decode("#5375e2"));
+        btn_profile.setFont(font2);
+        dashboard.add(btn_profile);
+
+
+
+        btn_manageBook = new JButton("MANAGE BOOK");
+        btn_manageBook.setForeground(Color.decode("#E9EDF5"));
+        btn_manageBook.setBackground(Color.decode("#5375e2"));
+        btn_manageBook.setFont(font2);
+        btn_manageBook.setBounds(30,380,250,40);
+        dashboard.add(btn_manageBook);
+
+
+
+        btn_event = new JButton("Manage Event");
+        btn_event.setBounds(30,460,250,40);
+        btn_event.setForeground(Color.decode("#E9EDF5"));
+        btn_event.setBackground(Color.decode("#5375e2"));
+        btn_event.setFont(font2);
+        dashboard.add(btn_event);
+
+
+
+
 
         leftpanel = new JPanel();
         leftpanel.setBorder(BorderFactory.createMatteBorder(8,8,8,8,Color.decode("#1A2B63")));
@@ -43,6 +79,8 @@ public class Dashboard {
         banner_label.setIcon(bannerIcon);
         banner_label.setBounds(320,10,700,300);
         dashboard.add(banner_label);
+
+
 
         txt_access = new JLabel("ACCESSORIES");
         txt_access.setForeground(Color.decode("#E9EDF5"));
@@ -70,12 +108,11 @@ public class Dashboard {
         datepanel.setBounds(380,600,200,50);
         dashboard.add(datepanel);
 
-        JLabel current_date = new JLabel(String.valueOf(date));
+        current_date = new JLabel(String.valueOf(date));
         current_date.setBounds(100,100,20,20);
         current_date.setFont(font1);
         current_date.setForeground(Color.decode("#5375e2"));
         datepanel.add(current_date);
-
 
 
 
@@ -96,6 +133,13 @@ public class Dashboard {
         current_time.setFont(font1);
         current_time.setForeground(Color.decode("#5375e2"));
         timepanel.add(current_time);
+
+        btn_manage = new JButton("Manage Book");
+        btn_manage.setBounds(30,460,250,40);
+        btn_manage.setForeground(Color.decode("#E9EDF5"));
+        btn_manage.setBackground(Color.decode("#5375e2"));
+        btn_manage.setFont(font2);
+        dashboard.add(btn_manage);
 
 
         dashboard.setLayout(null);
