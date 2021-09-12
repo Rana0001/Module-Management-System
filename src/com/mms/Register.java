@@ -13,6 +13,7 @@ public class Register implements ActionListener {
     JPasswordField password;
     JComboBox check;
     Font fon1, fon2;
+    JOptionPane message;
     public Register() {
         register = new JFrame(" Registration ");
         fon1 = new Font("Cambria", Font.BOLD, 22);
@@ -124,6 +125,7 @@ public class Register implements ActionListener {
 
         btn_register = new JButton("Submit");
         btn_register.setFont(fon2);
+        btn_register.addActionListener(this);
         btn_register.setForeground(Color.decode("#E9EDF5"));
         btn_register.setBackground(Color.decode("#1A2B63"));
         btn_register.setBounds(280, 540, 100, 50);
@@ -152,8 +154,34 @@ public class Register implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource()==btn_cancel){
+        String firstName = txt_fname.getText();
+        String lastName = txt_lname.getText();
+        String email = txt_email.getText();
+        String contact = txt_contact.getText();
+        String pass = password.getText();
+        String gender = check.getSelectedItem().toString();
+
+        User user = new User();
+        user.setFirstName(firstName);
+        user.setLastName(lastName);
+        user.setEmail(email);
+        user.setContact(contact);
+        user.setPassword(pass);
+        user.setCheck(gender);
+        if (e.getSource()==btn_register){
+            Database db = new Database();
+            String query = "Insert into user(firstName,lastName,email,contact,password,gender) values " +
+                    "('"+user.getFirstName()+"','"+user.getLastName()+"','"+user.getEmail()+"','"+user.getContact()+"','"
+            +user.getPassword()+"','"+user.getCheck()+"')";
+            int ans = db.insert(query);
+            if (ans>0){
+                JOptionPane.showMessageDialog(register,"User Created Sucessfully..");
+                register.dispose();
+            }
+
+        }else if (e.getSource()==btn_cancel){
             register.dispose();
         }
+        ;
     }
 }
