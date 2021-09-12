@@ -9,9 +9,11 @@ public class Register implements ActionListener {
     JFrame register;
     JLabel lbl_heading,lbl_subheading, lbl_fname, lbl_lname, lbl_email, lbl_pass, lbl_cpass,lbl_contact;
     JButton btn_register, btn_cancel;
-    JTextField txt_fname, txt_lnamae, txt_email,txt_contact;
-    JPasswordField password, confirmpass;
+    JTextField txt_fname, txt_lname, txt_email,txt_contact;
+    JPasswordField password;
+    JComboBox check;
     Font fon1, fon2;
+    JOptionPane message;
     public Register() {
         register = new JFrame(" Registration ");
         fon1 = new Font("Cambria", Font.BOLD, 22);
@@ -63,10 +65,10 @@ public class Register implements ActionListener {
         register.add(lbl_lname);
 
         // text field
-        txt_lnamae = new JTextField();
-        txt_lnamae.setFont(fon1);
-        txt_lnamae.setBounds(450, 320, 220, 30);
-        register.add(txt_lnamae);
+        txt_lname = new JTextField();
+        txt_lname.setFont(fon1);
+        txt_lname.setBounds(450, 320, 220, 30);
+        register.add(txt_lname);
 
         lbl_email = new JLabel("Email");
         lbl_email.setForeground(Color.decode("#E9EDF5"));
@@ -107,19 +109,23 @@ public class Register implements ActionListener {
         register.add(password);
         //Confirm Password
 
-        lbl_cpass = new JLabel("Confirm Password");
+        lbl_cpass = new JLabel("Gender");
         lbl_cpass.setForeground(Color.decode("#E9EDF5"));
         lbl_cpass.setFont(fon2);
-        lbl_cpass.setBounds(500, 430, 150, 60);
+        lbl_cpass.setBounds(530, 430, 150, 60);
         register.add(lbl_cpass);
 
-        confirmpass = new JPasswordField();
-        confirmpass.setFont(fon1);
-        confirmpass.setBounds(450, 480, 220, 30);
-        register.add(confirmpass);
+        String list[]={"Male","Female","Not Specified"};
+        check = new JComboBox(list);
+        check.setBounds(450,480,220,30);
+//        confirmpass = new JPasswordField();
+//        confirmpass.setFont(fon1);
+//        confirmpass.setBounds(450, 480, 220, 30);
+        register.add(check);
 
         btn_register = new JButton("Submit");
         btn_register.setFont(fon2);
+        btn_register.addActionListener(this);
         btn_register.setForeground(Color.decode("#E9EDF5"));
         btn_register.setBackground(Color.decode("#1A2B63"));
         btn_register.setBounds(280, 540, 100, 50);
@@ -148,8 +154,34 @@ public class Register implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource()==btn_cancel){
+        String firstName = txt_fname.getText();
+        String lastName = txt_lname.getText();
+        String email = txt_email.getText();
+        String contact = txt_contact.getText();
+        String pass = password.getText();
+        String gender = check.getSelectedItem().toString();
+
+        User user = new User();
+        user.setFirstName(firstName);
+        user.setLastName(lastName);
+        user.setEmail(email);
+        user.setContact(contact);
+        user.setPassword(pass);
+        user.setCheck(gender);
+        if (e.getSource()==btn_register){
+            Database db = new Database();
+            String query = "Insert into user(firstName,lastName,email,contact,password,gender) values " +
+                    "('"+user.getFirstName()+"','"+user.getLastName()+"','"+user.getEmail()+"','"+user.getContact()+"','"
+            +user.getPassword()+"','"+user.getCheck()+"')";
+            int ans = db.insert(query);
+            if (ans>0){
+                JOptionPane.showMessageDialog(register,"User Created Sucessfully..");
+                register.dispose();
+            }
+
+        }else if (e.getSource()==btn_cancel){
             register.dispose();
         }
+        ;
     }
 }

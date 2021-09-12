@@ -87,14 +87,25 @@ public class Login implements ActionListener {
 
     }
     public static void main(String[]Args){
+
         new Login();
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource()==btn_register){
+        String email = txt_username.getText();
+        String password = txt_password.getText();
+
+        User user = new User();
+        user.setEmail(email);
+        user.setPassword(password);
+        if (e.getSource()==btn_login){
+            String query = "Select email,password from tbl";
+
+            frame.dispose();
+        }else if (e.getSource()==btn_register){
             new Register();
             frame.dispose();
-        }
+    }
     }
 }
