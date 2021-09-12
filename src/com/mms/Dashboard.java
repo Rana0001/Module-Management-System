@@ -15,7 +15,7 @@ public class Dashboard {
 //    Date date;
     LocalDate date;
     java.util.Date time;
-    public Dashboard(){
+    public Dashboard(String username){
         long millis=System.currentTimeMillis();
         time = new java.util.Date(millis);
 
@@ -34,6 +34,11 @@ public class Dashboard {
         profile_label.setBounds(80,50,150,120);
         dashboard.add(profile_label);
 
+        label = new JLabel("Welcome "+username);
+        label.setBounds(50,200,250,30);
+        label.setForeground(Color.decode("#5375e2"));
+        label.setFont(font1);
+        dashboard.add(label);
 
 
         btn_profile = new JButton("PROFILE");
@@ -189,8 +194,5 @@ public class Dashboard {
 
 
 
-    }
-    public static void main(String[]Args){
-        new Dashboard();
     }
 }
