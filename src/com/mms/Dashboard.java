@@ -180,8 +180,6 @@ public class Dashboard {
         dashboard.add(statpanel);
 
 
-
-
         dashboard.setLayout(null);
         dashboard.setSize(1080, 800);
         dashboard.setVisible(true);
