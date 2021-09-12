@@ -5,6 +5,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 
 public class Login implements ActionListener {
@@ -62,6 +64,7 @@ public class Login implements ActionListener {
         btn_login = new JButton("Login");
         btn_login.setForeground(Color.decode("#E9EDF5"));
         btn_login.setBackground(Color.decode("#1A2B63"));
+        btn_login.addActionListener(this);
         btn_login.setBounds(150, 450, 100, 40);
         frame.add(btn_login);
 
@@ -100,9 +103,22 @@ public class Login implements ActionListener {
         user.setEmail(email);
         user.setPassword(password);
         if (e.getSource()==btn_login){
-            String query = "Select email,password from tbl";
+            String query = "Select email,password from user where email='"+email+"'and password ='"
+                    +password+"'";
+            Database db =new Database();
+            ResultSet rs= db.select(query);
+            try {
+                if (email.length()==0 && password.length()==0){
+            JOptionPane.showMessageDialog(btn_login,"Please! Re-enter your information.");
+                }else if (rs.next()){
+                    JOptionPane.showMessageDialog(btn_login,"Login Successfully.");
+                    new Dashboard(user.getEmail());
 
-            frame.dispose();
+                }
+                frame.dispose();
+            }catch (SQLException throwables){
+                throwables.printStackTrace();
+            }
         }else if (e.getSource()==btn_register){
             new Register();
             frame.dispose();
