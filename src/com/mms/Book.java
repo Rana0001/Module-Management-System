@@ -178,8 +178,8 @@ public class Book implements ActionListener, MouseListener {
         }else if (e.getSource()==btn_update) {
             try {
                 Database db = new Database();
-                String query = "Update book SET book_id='"+txt_bookid.getText()+"',book_name='"+txt_bookname.getText()+"',book_author='"+txt_bookaurthor+"' " +
-                        "where book_id='"+txt_bookid+"'";
+                String query = "Update book SET book_id='"+txt_bookid.getText()+"',book_name='"+txt_bookname.getText()+"',book_author='"+txt_bookaurthor.getText()+"' " +
+                        "where book_id='"+txt_bookid.getText()+"'";
 
                int i = table.getSelectedRow();
 
