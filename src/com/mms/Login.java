@@ -7,6 +7,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Objects;
 
 
 public class Login implements ActionListener {
@@ -92,10 +93,6 @@ public class Login implements ActionListener {
         frame.setResizable(false);
 
     }
-    public static void main(String[]Args){
-
-        new Login();
-    }
 
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -117,6 +114,8 @@ public class Login implements ActionListener {
                     JOptionPane.showMessageDialog(btn_login,"Login Successfully.");
                     new Dashboard(user.getEmail());
                     frame.dispose();
+                }else{
+                    JOptionPane.showMessageDialog(btn_login,"Please! Enter Correct Information.");
                 }
 
             }catch (SQLException throwables){

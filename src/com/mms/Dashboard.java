@@ -3,6 +3,7 @@ package com.mms;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.ResultSet;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.awt.*;
@@ -206,7 +207,8 @@ public class Dashboard implements ActionListener {
         } else if (e.getSource() == btn_event) {
             new Event();
         }else if (e.getSource()== btn_profile){
-            System.out.println(username);
+            new Profile(username);
+
         }else if (e.getSource()==btn_logout){
             int choice = JOptionPane.showConfirmDialog(dashboard,"Do you want to logout?","Logout",JOptionPane.YES_NO_CANCEL_OPTION);
             if (choice==0){
