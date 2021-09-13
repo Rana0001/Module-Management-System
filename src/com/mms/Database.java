@@ -18,7 +18,7 @@ public class Database {
             myConn = DriverManager.getConnection(url, user, password);
 
             if (myConn != null) {
-                System.out.println("Connection is Successful!");
+                System.out.print("");
             } else {
                 System.out.println("There is an error.");
             }
@@ -64,9 +64,5 @@ public class Database {
             throwables.printStackTrace();
         }
         return rows;
-    }
-
-    public static void main(String[] Args) {
-        new Database();
     }
 }
