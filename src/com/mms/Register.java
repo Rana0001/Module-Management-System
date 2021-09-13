@@ -148,10 +148,6 @@ public class Register implements ActionListener {
         register.setResizable(false);
 
     }
-    public static void main(String[]Args){
-        new Register();
-    }
-
     @Override
     public void actionPerformed(ActionEvent e) {
         String firstName = txt_fname.getText();
@@ -177,6 +173,7 @@ public class Register implements ActionListener {
             if (ans>0){
                 JOptionPane.showMessageDialog(register,"User Created Sucessfully..");
                 register.dispose();
+                new Login();
             }
 
         }else if (e.getSource()==btn_cancel){

@@ -116,9 +116,9 @@ public class Login implements ActionListener {
                 }else if (rs.next()){
                     JOptionPane.showMessageDialog(btn_login,"Login Successfully.");
                     new Dashboard(user.getEmail());
-
+                    frame.dispose();
                 }
-                frame.dispose();
+
             }catch (SQLException throwables){
                 throwables.printStackTrace();
             }

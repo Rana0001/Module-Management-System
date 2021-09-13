@@ -67,11 +67,15 @@ public class Book implements ActionListener, MouseListener {
 
         btn_add = new JButton("ADD");
         btn_add.setBounds(30,380,130,40);
+        btn_add.setForeground(Color.decode("#E9EDF5"));
+        btn_add.setBackground(Color.decode("#1A2B63"));
         btn_add.addActionListener(this);
         book.add(btn_add);
 
         btn_delete = new JButton("DELETE");
         btn_delete.setBounds(200,380,130,40);
+        btn_delete.setBackground(Color.decode("#1A2B63"));
+        btn_delete.setForeground(Color.decode("#E9EDF5"));
         btn_delete.addActionListener(this);
         book.add(btn_delete);
 
@@ -79,12 +83,16 @@ public class Book implements ActionListener, MouseListener {
         btn_update = new JButton("UPDATE");
         btn_update.setBounds(30,450,130,40);
         btn_update.addActionListener(this);
+        btn_update.setForeground(Color.decode("#E9EDF5"));
+        btn_update.setBackground(Color.decode("#1A2B63"));
         book.add(btn_update);
 
 
-        btn_refresh = new JButton("ClEAR");
+        btn_refresh = new JButton("CLEAR");
         btn_refresh.setBounds(200,450,130,40);
         btn_refresh.addActionListener(this);
+        btn_refresh.setForeground(Color.decode("#E9EDF5"));
+        btn_refresh.setBackground(Color.decode("#1A2B63"));
         book.add(btn_refresh);
 
 
@@ -138,11 +146,6 @@ public class Book implements ActionListener, MouseListener {
 
 
     }
-    public static void main(String[]Args){
-
-        new Book();
-
-    }
 
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -178,8 +181,8 @@ public class Book implements ActionListener, MouseListener {
         }else if (e.getSource()==btn_update) {
             try {
                 Database db = new Database();
-                String query = "Update book SET book_id='"+txt_bookid.getText()+"',book_name='"+txt_bookname.getText()+"',book_author='"+txt_bookaurthor+"' " +
-                        "where book_id='"+txt_bookid+"'";
+                String query = "Update book SET book_id='"+txt_bookid.getText()+"',book_name='"+txt_bookname.getText()+"',book_author='"+txt_bookaurthor.getText()+"' " +
+                        "where book_id='"+txt_bookid.getText()+"'";
 
                int i = table.getSelectedRow();
 
