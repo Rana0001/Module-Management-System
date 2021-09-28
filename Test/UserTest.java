@@ -1,4 +1,3 @@
-package Test;
 
 import com.mms.User;
 import org.junit.Test;
