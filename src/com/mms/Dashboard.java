@@ -276,6 +276,7 @@ public class Dashboard implements ActionListener {
         btn_about.setFont(new Font("Cambria", Font.BOLD, 16));
         btn_about.setForeground(Color.decode("#ffffff"));
         btn_about.setBackground(Color.decode("#6f2b8a"));
+        btn_event.addActionListener(this);
         btn_about.setBounds(65, 78, 161, 39);
         panel_about.add(btn_about);
 
